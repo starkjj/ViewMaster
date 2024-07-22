@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://yawnpf35qnjc"]
+
+[ext_resource type="Shader" path="res://Scenes/film_grain.gdshader" id="1_ncfqp"]
+
+[resource]
+shader = ExtResource("1_ncfqp")

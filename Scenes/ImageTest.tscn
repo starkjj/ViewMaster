@@ -1,0 +1,288 @@
+[gd_scene load_steps=13 format=3 uid="uid://b60lxyaslougy"]
+
+[ext_resource type="Script" path="res://Scenes/VMController.gd" id="1_j0trb"]
+[ext_resource type="Texture2D" uid="uid://ce5oah17hcpt" path="res://Textures/576954BF-3659-4399-B5E0-E0C9B69CB976.jpeg" id="2_0vbbl"]
+[ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_888hi"]
+[ext_resource type="Script" path="res://Scenes/KitchenScene.gd" id="3_k44fo"]
+[ext_resource type="Texture2D" uid="uid://bkvl3tbycig4g" path="res://Textures/VMScene.png" id="4_nnvfs"]
+[ext_resource type="Shader" path="res://Shaders/VHSWiggle.gdshader" id="6_k4mh4"]
+[ext_resource type="Texture2D" uid="uid://besd88d7si1bf" path="res://Textures/OverlayFrame.png" id="81_kns5e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwpu7"]
+shader = ExtResource("6_k4mh4")
+shader_parameter/wiggle = 0.0
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.25
+shader_parameter/blur_samples = 15
+
+[sub_resource type="Animation" id="Animation_idhp4"]
+resource_name = "NextSlide"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrameOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36, 0.74),
+"transitions": PackedFloat32Array(0.315336, 0.315336, 0.315336),
+"update": 0,
+"values": [0.0, 0.523599, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_slide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nko04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrameOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rpkgg"]
+resource_name = "MethodTest"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_slide"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pc14"]
+_data = {
+"MethodTest": SubResource("Animation_rpkgg"),
+"NextSlide": SubResource("Animation_idhp4"),
+"RESET": SubResource("Animation_nko04")
+}
+
+[node name="Node3D" type="Node" node_paths=PackedStringArray("slides")]
+script = ExtResource("1_j0trb")
+slides = [NodePath("Container/Library"), NodePath("Container/Kitchen"), NodePath("Container/Office")]
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+
+[node name="Library" type="SubViewportContainer" parent="Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+mouse_filter = 2
+
+[node name="Kitchen" type="SubViewport" parent="Container/Library"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1200, 1080)
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Library/Kitchen"]
+position = Vector2(800, 550)
+scale = Vector2(1.28, 1.28)
+texture = ExtResource("2_0vbbl")
+
+[node name="Kitchen" type="SubViewportContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+mouse_filter = 2
+
+[node name="Kitchen" type="SubViewport" parent="Container/Kitchen"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1200, 1080)
+render_target_update_mode = 4
+
+[node name="KitchenScene" type="Node2D" parent="Container/Kitchen/Kitchen"]
+script = ExtResource("3_k44fo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Kitchen/Kitchen/KitchenScene"]
+texture = ExtResource("3_888hi")
+centered = false
+offset = Vector2(-238.31, 0)
+
+[node name="carrot_area" type="Area2D" parent="Container/Kitchen/Kitchen/KitchenScene/Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/Kitchen/Kitchen/KitchenScene/Sprite2D/carrot_area"]
+polygon = PackedVector2Array(1450, 795, 1473, 778, 1561, 754, 1574, 753, 1588, 764, 1594, 771, 1594, 780, 1585, 794, 1575, 799, 1483, 806, 1465, 804, 1454, 801)
+
+[node name="Office" type="SubViewportContainer" parent="Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+mouse_filter = 2
+
+[node name="Kitchen" type="SubViewport" parent="Container/Office"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1200, 1080)
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Office/Kitchen"]
+texture = ExtResource("4_nnvfs")
+centered = false
+
+[node name="ViewportFrame" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("81_kns5e")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FrameOverlay" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(3840, 540)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("81_kns5e")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VHS" type="ColorRect" parent="."]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_pwpu7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FilmGrain" type="ColorRect" parent="."]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_pwpu7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_method = 1
+libraries = {
+"": SubResource("AnimationLibrary_2pc14")
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 204.0
+offset_bottom = 81.0
+
+[connection signal="input_event" from="Container/Kitchen/Kitchen/KitchenScene/Sprite2D/carrot_area" to="Container/Kitchen/Kitchen/KitchenScene" method="_on_carrot_area_input_event"]
+[connection signal="mouse_entered" from="Container/Kitchen/Kitchen/KitchenScene/Sprite2D/carrot_area" to="Container/Kitchen/Kitchen/KitchenScene" method="_on_carrot_area_mouse_entered"]

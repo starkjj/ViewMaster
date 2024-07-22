@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnpypt2wusvbo"]
+
+[ext_resource type="Script" path="res://Scenes/Components/word_bank_slot.gd" id="1_h7cy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjf4m"]
+size = Vector2(100, 32)
+
+[node name="WordBankSlot" type="Control" groups=["droppable"]]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_h7cy4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["droppable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_cjf4m")

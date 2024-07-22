@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu43csdb2frgb"]
+
+[ext_resource type="Script" path="res://Scenes/word_bank.gd" id="1_6xc3j"]
+[ext_resource type="FontFile" uid="uid://c1vxanmu82bqr" path="res://Fonts/Maiola/Maiola_Book.OTF" id="2_2x06k"]
+[ext_resource type="PackedScene" uid="uid://cnpypt2wusvbo" path="res://Scenes/Components/word_bank_slot.tscn" id="3_7iewi"]
+
+[node name="WordBank" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6xc3j")
+word_list = Array[String](["First", "Second", "Third", "Fourth"])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 720.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SentanceMargin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="SentanceFlow" type="HFlowContainer" parent="VBoxContainer/SentanceMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2x06k")
+theme_override_font_sizes/font_size = 32
+text = "This is where you put a"
+
+[node name="Label3" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2x06k")
+theme_override_font_sizes/font_size = 32
+text = "label"
+
+[node name="WordBankSlot" parent="VBoxContainer/SentanceMargin/SentanceFlow" instance=ExtResource("3_7iewi")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2x06k")
+theme_override_font_sizes/font_size = 32
+text = "and where you can also put more "
+horizontal_alignment = 3
+
+[node name="WordBankMargin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="WordBank" type="HFlowContainer" parent="VBoxContainer/WordBankMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2

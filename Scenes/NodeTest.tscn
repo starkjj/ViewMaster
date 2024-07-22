@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=3 uid="uid://n2e7dra5jy8q"]
+
+[ext_resource type="Script" path="res://Scenes/ReelController.gd" id="1_kmn18"]
+[ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_6a3fj"]
+[ext_resource type="Texture2D" uid="uid://bkvl3tbycig4g" path="res://Textures/VMScene.png" id="4_hjdnp"]
+[ext_resource type="Texture2D" uid="uid://dhi6qa7hqi1t6" path="res://Textures/WallaceTest.png" id="5_67h47"]
+[ext_resource type="Texture2D" uid="uid://cb2a4xlelhu55" path="res://Textures/Teapot.png" id="6_o8lne"]
+[ext_resource type="Texture2D" uid="uid://besd88d7si1bf" path="res://Textures/OverlayFrame.png" id="6_w8gur"]
+[ext_resource type="Shader" path="res://Shaders/VHSWiggle.gdshader" id="7_xu3wk"]
+[ext_resource type="PackedScene" uid="uid://b8kplr3qgvy8f" path="res://Scenes/Components/slide.tscn" id="9_qqbag"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuubn"]
+shader = ExtResource("7_xu3wk")
+shader_parameter/wiggle = 0.0
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.25
+shader_parameter/blur_samples = 15
+
+[sub_resource type="Animation" id="Animation_rpkgg"]
+resource_name = "MethodTest"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_slide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_idhp4"]
+resource_name = "NextSlide"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/FrameOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36, 0.74),
+"transitions": PackedFloat32Array(0.315336, 0.315336, 0.315336),
+"update": 0,
+"values": [0.0, 0.523599, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_slide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nko04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/FrameOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pc14"]
+_data = {
+"MethodTest": SubResource("Animation_rpkgg"),
+"NextSlide": SubResource("Animation_idhp4"),
+"RESET": SubResource("Animation_nko04")
+}
+
+[node name="Reel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kmn18")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_right = -590.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(2600, 0)
+mouse_filter = 2
+
+[node name="SlideContainer" type="Node2D" parent="Container"]
+
+[node name="Kitchen" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("3_6a3fj")
+
+[node name="VMScene" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("4_hjdnp")
+
+[node name="WallaceTest" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("5_67h47")
+
+[node name="Teapot" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("6_o8lne")
+
+[node name="FrameOverlay" type="Sprite2D" parent="Container"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_w8gur")
+
+[node name="VHS" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_nuubn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_method = 1
+libraries = {
+"": SubResource("AnimationLibrary_2pc14")
+}
