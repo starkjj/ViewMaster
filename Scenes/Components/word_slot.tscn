@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://f303e5h2uvex"]
+
+[ext_resource type="Script" path="res://Scenes/Components/word_slot.gd" id="1_7d1bh"]
+[ext_resource type="FontFile" uid="uid://c1vxanmu82bqr" path="res://Fonts/Maiola/Maiola_Book.OTF" id="1_tlph0"]
+
+[node name="word_slot" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 100.0
+offset_bottom = 28.0
+script = ExtResource("1_7d1bh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tlph0")
+theme_override_font_sizes/font_size = 24

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/word_bank.gd" id="1_6xc3j"]
 [ext_resource type="FontFile" uid="uid://c1vxanmu82bqr" path="res://Fonts/Maiola/Maiola_Book.OTF" id="2_2x06k"]
-[ext_resource type="PackedScene" uid="uid://cnpypt2wusvbo" path="res://Scenes/Components/word_bank_slot.tscn" id="3_7iewi"]
+[ext_resource type="PackedScene" uid="uid://f303e5h2uvex" path="res://Scenes/Components/word_slot.tscn" id="3_3pfi1"]
 
 [node name="WordBank" type="Control"]
 layout_mode = 3
@@ -43,15 +43,8 @@ theme_override_fonts/font = ExtResource("2_2x06k")
 theme_override_font_sizes/font_size = 32
 text = "This is where you put a"
 
-[node name="Label3" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
+[node name="word_slot" parent="VBoxContainer/SentanceMargin/SentanceFlow" instance=ExtResource("3_3pfi1")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2x06k")
-theme_override_font_sizes/font_size = 32
-text = "label"
-
-[node name="WordBankSlot" parent="VBoxContainer/SentanceMargin/SentanceFlow" instance=ExtResource("3_7iewi")]
-layout_mode = 2
-mouse_default_cursor_shape = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
 layout_mode = 2
@@ -59,6 +52,12 @@ theme_override_fonts/font = ExtResource("2_2x06k")
 theme_override_font_sizes/font_size = 32
 text = "and where you can also put more "
 horizontal_alignment = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/SentanceMargin/SentanceFlow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2x06k")
+theme_override_font_sizes/font_size = 32
+text = "label"
 
 [node name="WordBankMargin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
