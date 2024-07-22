@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n2e7dra5jy8q"]
+[gd_scene load_steps=15 format=3 uid="uid://n2e7dra5jy8q"]
 
 [ext_resource type="Script" path="res://Scenes/ReelController.gd" id="1_kmn18"]
 [ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_6a3fj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhi6qa7hqi1t6" path="res://Textures/WallaceTest.png" id="5_67h47"]
 [ext_resource type="Texture2D" uid="uid://cb2a4xlelhu55" path="res://Textures/Teapot.png" id="6_o8lne"]
 [ext_resource type="Texture2D" uid="uid://besd88d7si1bf" path="res://Textures/OverlayFrame.png" id="6_w8gur"]
+[ext_resource type="Texture2D" uid="uid://djpmofu1wwh3o" path="res://Textures/SebastianAlbedoSkin-3.png" id="7_p5jn3"]
 [ext_resource type="Shader" path="res://Shaders/VHSWiggle.gdshader" id="7_xu3wk"]
 [ext_resource type="PackedScene" uid="uid://b8kplr3qgvy8f" path="res://Scenes/Components/slide.tscn" id="9_qqbag"]
 
@@ -40,7 +41,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Container/FrameOverlay:visible")
+tracks/0/path = NodePath("FrameOverlay:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +82,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Container/FrameOverlay:visible")
+tracks/0/path = NodePath("FrameOverlay:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -148,9 +149,13 @@ slide_image = ExtResource("5_67h47")
 [node name="Teapot" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
 slide_image = ExtResource("6_o8lne")
 
-[node name="FrameOverlay" type="Sprite2D" parent="Container"]
+[node name="Sebastian" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("7_p5jn3")
+
+[node name="FrameOverlay" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0, 0, 0, 1)
+position = Vector2(1330, 540)
+scale = Vector2(1, 1)
 texture = ExtResource("6_w8gur")
 
 [node name="VHS" type="ColorRect" parent="."]
