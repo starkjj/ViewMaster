@@ -155,7 +155,6 @@ slide_image = ExtResource("7_p5jn3")
 [node name="FrameOverlay" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1330, 540)
-scale = Vector2(1, 1)
 texture = ExtResource("6_w8gur")
 
 [node name="VHS" type="ColorRect" parent="."]
