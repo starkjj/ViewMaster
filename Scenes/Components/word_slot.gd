@@ -2,6 +2,7 @@ extends PanelContainer
 
 var dragdrop_label:PackedScene = preload("res://Scenes/drag_label.tscn")
 var holds_word:bool = false
+var correct_word:String
 var current_label
 var current_dragdrop
 
@@ -22,6 +23,13 @@ func _drop_data(_position: Vector2, drag_label) -> void:
 	current_dragdrop = drag_label
 	custom_minimum_size.x = 0
 	holds_word = true
+	
+	if drag_label.text == correct_word:
+		$Label.modulate = Color(Color.GREEN, 1.0)
+		print(correct_word + " is correct")
+	else:
+		$Label.modulate = Color(Color.CRIMSON, 1.0)
+		print(drag_label.text + " is wrong")
 
 # Set the slots lavel
 func _set_label(text):

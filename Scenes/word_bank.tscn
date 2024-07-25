@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu43csdb2frgb"]
+[gd_scene load_steps=2 format=3 uid="uid://cu43csdb2frgb"]
 
 [ext_resource type="Script" path="res://Scenes/word_bank.gd" id="1_6xc3j"]
-[ext_resource type="Theme" uid="uid://5hhi0s7mevjn" path="res://Themes/scene_sentence_theme.tres" id="1_cue6x"]
 
 [node name="WordBank" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_cue6x")
 script = ExtResource("1_6xc3j")
 word_list = Array[String](["words", "correct", "one", "order"])
 scene_sentance = "In this scene, there are several [0] that can be placed. You have to figure out the [1] labels and where they go. Right now they have only [2] proper [3] ."
