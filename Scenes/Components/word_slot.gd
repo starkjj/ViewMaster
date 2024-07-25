@@ -1,8 +1,9 @@
 extends PanelContainer
 
-var drag_label:PackedScene = preload("res://Scenes/drag_label.tscn")
+var dragdrop_label:PackedScene = preload("res://Scenes/drag_label.tscn")
 var holds_word:bool = false
 var current_label
+var current_dragdrop
 
 @onready var label: Label = $Label
 
@@ -12,15 +13,20 @@ func _ready() -> void:
 		custom_minimum_size.x = 100
 
 func _can_drop_data(_position: Vector2, drag_label) -> bool:
-	if holds_word:
-		return false
 	var can_drop: bool = drag_label is Node and drag_label.is_in_group("draggable")
 	return can_drop
 
 func _drop_data(_position: Vector2, drag_label) -> void:
+	drag_label._set_in_use(true)
 	_set_label(drag_label.text)
+	current_dragdrop = drag_label
 	custom_minimum_size.x = 0
 	holds_word = true
+
+# Set the slots lavel
+func _set_label(text):
+	current_label = text
+	label.text = text
 
 # Picking up the word again
 func _get_drag_data(at_position: Vector2) -> Variant:
@@ -28,10 +34,14 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	_set_label("")
 	holds_word = false
 	custom_minimum_size.x = 100
+	
+	# Tells the current dragdrop that it's not being used
+	current_dragdrop._set_in_use(false)
+	
 	return self
 
 func _get_preview_control() -> Control:
-	var drag_preview = drag_label.instantiate()
+	var drag_preview = dragdrop_label.instantiate()
 	drag_preview.text = current_label
 	
 	# Centers the mouse
@@ -39,7 +49,3 @@ func _get_preview_control() -> Control:
 	center_on_mouse_control.add_child(drag_preview)
 	drag_preview.position = -0.5 * drag_preview.size
 	return center_on_mouse_control
-
-func _set_label(text):
-	current_label = text
-	label.text = text

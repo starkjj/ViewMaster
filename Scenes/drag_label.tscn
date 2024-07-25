@@ -20,6 +20,23 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("1_wrhl2")
 
+[node name="Outline" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -26.0
+offset_right = 102.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.772549, 0.388235, 0.262745, 1)
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -30,7 +47,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
-custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.172549, 0.172549, 0.172549, 1)

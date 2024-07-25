@@ -6,6 +6,7 @@ var drag_label:PackedScene = preload("res://Scenes/drag_label.tscn")
 
 @onready var label: Label = $PanelContainer/ColorRect/Label
 @onready var panel_container: PanelContainer = $PanelContainer
+@onready var outline = $Outline
 
 func _ready() -> void:
 	label.text = text
@@ -24,3 +25,9 @@ func _get_preview_control() -> Control:
 	center_on_mouse_control.add_child(drag_preview)
 	drag_preview.position = -0.5 * drag_preview.size
 	return center_on_mouse_control
+
+func _set_in_use(is_in_use:bool):
+	if is_in_use:
+		outline.visible = true
+	else:
+		outline.visible = false

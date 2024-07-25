@@ -12,4 +12,4 @@ script = ExtResource("1_7d1bh")
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_tlph0")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
