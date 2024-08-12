@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://n2e7dra5jy8q"]
+[gd_scene load_steps=19 format=3 uid="uid://n2e7dra5jy8q"]
 
 [ext_resource type="Script" path="res://Scenes/ReelController.gd" id="1_kmn18"]
 [ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_6a3fj"]
@@ -7,18 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://cb2a4xlelhu55" path="res://Textures/Teapot.png" id="6_o8lne"]
 [ext_resource type="Texture2D" uid="uid://besd88d7si1bf" path="res://Textures/OverlayFrame.png" id="6_w8gur"]
 [ext_resource type="Texture2D" uid="uid://djpmofu1wwh3o" path="res://Textures/SebastianAlbedoSkin-3.png" id="7_p5jn3"]
-[ext_resource type="Shader" path="res://Shaders/VHSWiggle.gdshader" id="7_xu3wk"]
 [ext_resource type="Texture2D" uid="uid://bk5co8l7cyw0f" path="res://Textures/HE_12.png" id="8_i1wt8"]
 [ext_resource type="PackedScene" uid="uid://b8kplr3qgvy8f" path="res://Scenes/Components/slide.tscn" id="9_qqbag"]
 [ext_resource type="Texture2D" uid="uid://bh3eu6t485p74" path="res://Textures/ColorTest_2.png" id="10_a1etj"]
 [ext_resource type="Texture2D" uid="uid://5ha4pu7yhi8b" path="res://Textures/Test-2.png" id="10_wpn3v"]
+[ext_resource type="Texture2D" uid="uid://bds37m4jn0e58" path="res://Textures/ColorTest_3.png" id="11_4yofj"]
+[ext_resource type="Shader" path="res://Shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="13_o0oxg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nuubn"]
-shader = ExtResource("7_xu3wk")
-shader_parameter/wiggle = 0.0
-shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 0.25
-shader_parameter/blur_samples = 15
+shader = ExtResource("13_o0oxg")
+shader_parameter/blur_amount = 1.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 0.0
 
 [sub_resource type="Animation" id="Animation_rpkgg"]
 resource_name = "MethodTest"
@@ -164,6 +164,9 @@ slide_image = ExtResource("10_a1etj")
 [node name="Lab" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
 slide_image = ExtResource("10_wpn3v")
 
+[node name="House2" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+slide_image = ExtResource("11_4yofj")
+
 [node name="FrameOverlay" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1330, 540)
@@ -171,7 +174,6 @@ texture = ExtResource("6_w8gur")
 
 [node name="VHS" type="ColorRect" parent="."]
 unique_name_in_owner = true
-visible = false
 top_level = true
 material = SubResource("ShaderMaterial_nuubn")
 layout_mode = 1
