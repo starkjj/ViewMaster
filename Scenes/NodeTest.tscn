@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://n2e7dra5jy8q"]
+[gd_scene load_steps=18 format=3 uid="uid://n2e7dra5jy8q"]
 
 [ext_resource type="Script" path="res://Scenes/ReelController.gd" id="1_kmn18"]
 [ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_6a3fj"]
@@ -12,13 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bh3eu6t485p74" path="res://Textures/ColorTest_2.png" id="10_a1etj"]
 [ext_resource type="Texture2D" uid="uid://5ha4pu7yhi8b" path="res://Textures/Test-2.png" id="10_wpn3v"]
 [ext_resource type="Texture2D" uid="uid://bds37m4jn0e58" path="res://Textures/ColorTest_3.png" id="11_4yofj"]
-[ext_resource type="Shader" path="res://Shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="13_o0oxg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuubn"]
-shader = ExtResource("13_o0oxg")
-shader_parameter/blur_amount = 1.0
-shader_parameter/signal_quality = 0.0
-shader_parameter/bottom_strenth = 0.0
+[ext_resource type="Material" uid="uid://c85oxmu3tyugq" path="res://Shaders/NTSC_Distort.tres" id="13_adjxs"]
 
 [sub_resource type="Animation" id="Animation_rpkgg"]
 resource_name = "MethodTest"
@@ -175,7 +169,7 @@ texture = ExtResource("6_w8gur")
 [node name="VHS" type="ColorRect" parent="."]
 unique_name_in_owner = true
 top_level = true
-material = SubResource("ShaderMaterial_nuubn")
+material = ExtResource("13_adjxs")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

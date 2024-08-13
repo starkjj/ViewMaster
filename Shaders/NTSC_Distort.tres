@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c85oxmu3tyugq"]
+
+[ext_resource type="Shader" path="res://Shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="1_h1dic"]
+
+[resource]
+shader = ExtResource("1_h1dic")
+shader_parameter/blur_amount = 1.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 0.0
