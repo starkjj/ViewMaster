@@ -8,7 +8,7 @@
 shader = ExtResource("1_hfvjn")
 shader_parameter/screen_size = Vector2(1300, 1080)
 shader_parameter/is_enabled = true
-shader_parameter/grain_amount = 0.003
+shader_parameter/grain_amount = 0.05
 shader_parameter/colored = false
 shader_parameter/color_amount = 0.6
 shader_parameter/grain_size = 1.6
@@ -18,7 +18,7 @@ shader_parameter/lum_amount = 500.0
 shader = ExtResource("1_hfvjn")
 shader_parameter/screen_size = Vector2(1300, 1080)
 shader_parameter/is_enabled = true
-shader_parameter/grain_amount = 0.003
+shader_parameter/grain_amount = 0.05
 shader_parameter/colored = false
 shader_parameter/color_amount = 0.6
 shader_parameter/grain_size = 1.6

@@ -1,17 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://n2e7dra5jy8q"]
+[gd_scene load_steps=16 format=3 uid="uid://n2e7dra5jy8q"]
 
 [ext_resource type="Script" path="res://Scenes/ReelController.gd" id="1_kmn18"]
 [ext_resource type="Texture2D" uid="uid://dcf3r44h2w54g" path="res://Textures/kitchen.png" id="3_6a3fj"]
 [ext_resource type="Texture2D" uid="uid://bkvl3tbycig4g" path="res://Textures/VMScene.png" id="4_hjdnp"]
 [ext_resource type="Texture2D" uid="uid://dhi6qa7hqi1t6" path="res://Textures/WallaceTest.png" id="5_67h47"]
-[ext_resource type="Texture2D" uid="uid://cb2a4xlelhu55" path="res://Textures/Teapot.png" id="6_o8lne"]
 [ext_resource type="Texture2D" uid="uid://besd88d7si1bf" path="res://Textures/OverlayFrame.png" id="6_w8gur"]
 [ext_resource type="Texture2D" uid="uid://djpmofu1wwh3o" path="res://Textures/SebastianAlbedoSkin-3.png" id="7_p5jn3"]
 [ext_resource type="Texture2D" uid="uid://bk5co8l7cyw0f" path="res://Textures/HE_12.png" id="8_i1wt8"]
 [ext_resource type="PackedScene" uid="uid://b8kplr3qgvy8f" path="res://Scenes/Components/slide.tscn" id="9_qqbag"]
-[ext_resource type="Texture2D" uid="uid://bh3eu6t485p74" path="res://Textures/ColorTest_2.png" id="10_a1etj"]
 [ext_resource type="Texture2D" uid="uid://5ha4pu7yhi8b" path="res://Textures/Test-2.png" id="10_wpn3v"]
-[ext_resource type="Texture2D" uid="uid://bds37m4jn0e58" path="res://Textures/ColorTest_3.png" id="11_4yofj"]
+[ext_resource type="Texture2D" uid="uid://bn854dtuf12rh" path="res://Textures/AltScene3.png" id="12_5bb8e"]
 [ext_resource type="Material" uid="uid://c85oxmu3tyugq" path="res://Shaders/NTSC_Distort.tres" id="13_adjxs"]
 
 [sub_resource type="Animation" id="Animation_rpkgg"]
@@ -138,28 +136,28 @@ mouse_filter = 2
 slide_image = ExtResource("3_6a3fj")
 
 [node name="VMScene" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
 slide_image = ExtResource("4_hjdnp")
 
 [node name="WallaceTest" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+visible = false
 slide_image = ExtResource("5_67h47")
 
-[node name="Teapot" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
-slide_image = ExtResource("6_o8lne")
-
 [node name="Sebastian" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+visible = false
 slide_image = ExtResource("7_p5jn3")
 
-[node name="House" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
-slide_image = ExtResource("8_i1wt8")
-
-[node name="House3" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
-slide_image = ExtResource("10_a1etj")
-
 [node name="Lab" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+visible = false
 slide_image = ExtResource("10_wpn3v")
 
-[node name="House2" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
-slide_image = ExtResource("11_4yofj")
+[node name="House" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+visible = false
+slide_image = ExtResource("8_i1wt8")
+
+[node name="House6" parent="Container/SlideContainer" instance=ExtResource("9_qqbag")]
+visible = false
+slide_image = ExtResource("12_5bb8e")
 
 [node name="FrameOverlay" type="Sprite2D" parent="."]
 visible = false
