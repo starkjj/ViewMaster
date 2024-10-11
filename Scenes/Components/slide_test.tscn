@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpoey3gbygsrb"]
+
+[ext_resource type="Script" path="res://Scenes/Components/slide_test.gd" id="1_6d7rq"]
+[ext_resource type="Shader" path="res://Scenes/film_grain.gdshader" id="2_qsjgw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ssxs"]
+shader = ExtResource("2_qsjgw")
+shader_parameter/screen_size = Vector2(1300, 1080)
+shader_parameter/is_enabled = true
+shader_parameter/grain_amount = 0.05
+shader_parameter/colored = false
+shader_parameter/color_amount = 0.6
+shader_parameter/grain_size = 1.6
+shader_parameter/lum_amount = 500.0
+
+[node name="Slide" type="Node2D"]
+script = ExtResource("1_6d7rq")
+
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="SlideSprite" type="Sprite2D" parent="Scene"]
+
+[node name="FilmGrain" type="ColorRect" parent="Scene"]
+modulate = Color(1, 1, 1, 0.118)
+material = SubResource("ShaderMaterial_0ssxs")
+custom_minimum_size = Vector2(1200, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
